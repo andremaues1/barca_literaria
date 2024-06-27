@@ -3,6 +3,8 @@ from kivy.lang import Builder
 from telas import *
 from botoes import *
 import requests
+import os
+import certifi
 from datetime import date
 from banner_livros import BannerLivros
 from kivy.uix.checkbox import CheckBox
@@ -24,7 +26,7 @@ from kivy.core.window import Window
 
 
 
-
+os.environ["SSL_CERT_FILE"] = certifi.where()
 
 
 GUI = Builder.load_file("main.kv")
