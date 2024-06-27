@@ -1,0 +1,98 @@
+<HomePage>:
+    FloatLayout:
+
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "Images/bg1.jpg"
+        Image:
+            pos_hint:{"right":1,"top":0.78}
+            size_hint: 1, 0.2
+            source:"Images/barca.jpg"
+            id: foto_perfil
+
+
+
+        GridLayout:
+            pos_hint:{"right":0.68,"top":0.55}
+            size_hint: 0.37, 0.33
+            cols: 1
+            padding: 0
+            spacing: 25
+
+            Button:
+                background_color: (1,1,1,0)
+                color: (0,0,0,1)
+                bold: True
+                text: "Realizar empréstimo"
+                on_release: app.mudar_tela("emprestimo")
+                canvas.before:
+                    Color:
+                        rgba: 135/255,206/255,250/255,1
+                    Line:
+                        width: 2
+                        rectangle: (self.x, self.y, self.width, self.height)
+
+            Button:
+                background_color: (1,1,1,0)
+                color: (0,0,0,1)
+                bold: True
+                text: "Inserir e Excluir livros"
+                on_release: app.mudar_tela("catalogo")
+                canvas.before:
+                    Color:
+                        rgba: 135/255,206/255,250/255,1
+                    Line:
+                        width: 2
+                        rectangle: (self.x, self.y, self.width, self.height)
+
+
+            Button:
+                background_color: (1,1,1,0)
+                color: (0,0,0,1)
+                bold: True
+                text: "Consultar acervo"
+                on_release: app.mudar_tela("relatorio")
+                canvas.before:
+                    Color:
+                        rgba: 135/255,206/255,250/255,1
+                    Line:
+                        width: 2
+                        rectangle: (self.x, self.y, self.width, self.height)
+
+
+            Button:
+                background_color: (1,1,1,0)
+                color: (0,0,0,1)
+                bold: True
+                text: "Cadastrar aluno"
+                on_release: app.mudar_tela("cadastrar_aluno")
+                canvas.before:
+                    Color:
+                        rgba: 135/255,206/255,250/255,1
+                    Line:
+                        width: 2
+                        rectangle: (self.x, self.y, self.width, self.height)
+
+
+            Button:
+                background_color: (1,1,1,0)
+                color: (0,0,0,1)
+                bold: True
+                text: "Perfil dos alunos"
+                on_release: app.mudar_tela("perfil_aluno")
+                canvas.before:
+                    Color:
+                        rgba: 135/255,206/255,250/255,1
+                    Line:
+                        width: 2
+                        rectangle: (self.x, self.y, self.width, self.height)
+
+
+
+
+
+
+
+

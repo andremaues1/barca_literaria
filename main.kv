@@ -1,0 +1,48 @@
+#:include kv/homepage.kv
+#:include kv/catalogo.kv
+#:include kv/emprestimo.kv
+#:include kv/relatorio.kv
+#:include kv/perfil_aluno.kv
+#:include kv/cadastrar_aluno.kv
+#:include kv/login.kv
+#:import utils kivy.utils
+FloatLayout:
+    ScreenManager:
+        id: screen_manager
+
+
+        LoginPage:
+            name: "fazer_login"
+            id: fazer_login
+
+
+        HomePage:
+            name: "homepage"
+            id: homepage
+
+        Emprestimo:
+            name: "emprestimo"
+            id: emprestimo
+
+
+        Catalogo:
+            name: "catalogo"
+            id: catalogo
+
+
+        Relatorio:
+            name: "relatorio"
+            id: relatorio
+
+
+        PerfilAluno:
+            name: "perfil_aluno"
+            id: perfil_aluno
+
+
+        CadastrarAluno:
+            name: "cadastrar_aluno"
+            id: cadastrar_aluno
+
+
+

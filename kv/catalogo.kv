@@ -1,0 +1,543 @@
+<Catalogo>:
+    FloatLayout:
+
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "Images/imagem_barcos.jpg"
+        Image:
+            pos_hint:{"right":1,"top":0.78}
+            size_hint: 1, 0.2
+            source:"Images/barca.jpg"
+            id: foto_perfil
+
+        Button:
+            pos_hint:{"right":0.38,"top":0.295}
+            color: 0,0,0,1
+            text: 'Adicionar livro'
+            size_hint: None, None
+            size: 180, 70
+            background_color: 0, 0, 0, 0  # Torna o fundo padrão transparente
+            on_release: app.criar_pop_up()
+            canvas.before:
+                Color:
+                    rgba: (0, 0, 0, 0.03) if self.state == 'normal' else (0, 0, 0, 0.3)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [50, 50, 50, 50]  # Raios para criar pontas arredondadas
+                Color:
+                    rgba: 135/255,206/255,250/255,0.9
+                Line:
+                    width: 2
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 50, 50, 50, 50)
+        Button:
+            pos_hint:{"right":0.81,"top":0.295}
+            color: 0,0,0,1
+            text: 'Excluir livro'
+            size_hint: None, None
+            size: 180, 70
+            background_color: 0, 0, 0, 0  # Torna o fundo padrão transparente
+            on_release: app.criar_pop_up2()
+            canvas.before:
+                Color:
+                    rgba: (0, 0, 0, 0.03) if self.state == 'normal' else (0, 0, 0, 0.3)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [50, 50, 50, 50]  # Raios para criar pontas arredondadas
+                Color:
+                    rgba: 1,0,0,0.8
+                Line:
+                    width: 2
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 50, 50, 50, 50)
+
+
+
+
+
+        FloatLayout:
+
+            Label:
+                pos_hint:{"right":0.555,"top":0.35}
+                size_hint: 0.1, 0.2
+                color: (0,0,0,1)
+                text: ""
+                id: confirmacao
+                font_size: root.calculate_font_size(self.width)
+
+            Label:
+                pos_hint:{"right":0.28,"top":0.63}
+                size_hint: 0.1, 0.2
+                color: (0,0,0,1)
+                text: "Título:"
+                id: texto_titulo
+                font_size: root.calculate_font_size(self.width)
+            TextInput:
+                pos_hint:{"right":0.47,"top":0.55}
+                size_hint: 0.2, 0.04
+                background_color: (1,1,1,0)
+                id: titulo
+                hint_text: ""
+                color: (0,0,0,1)
+                canvas.before:
+                    Color:
+                        rgba: 0,0,0,1
+                    Line:
+                        width: 1
+                        rectangle: (self.x, self.y, self.width, self.height)
+            Label:
+                pos_hint:{"right":0.57,"top":0.63}
+                size_hint: 0.1, 0.2
+                color: (0,0,0,1)
+                text: "Autor:"
+                id: texto_autor
+                font_size: root.calculate_font_size(self.width)
+            TextInput:
+                pos_hint:{"right":0.76,"top":0.55}
+                size_hint: 0.2, 0.04
+                background_color: (1,1,1,0)
+                id: autor
+                hint_text: ""
+                color: (0,0,0,1)
+                canvas.before:
+                    Color:
+                        rgba: 0,0,0,1
+                    Line:
+                        width: 1
+                        rectangle: (self.x, self.y, self.width, self.height)
+            Label:
+                pos_hint:{"right":0.35,"top":0.43}
+                size_hint: 0.1, 0.2
+                color: (0,0,0,1)
+                text: "Número de Páginas: "
+                id: texto_paginas
+                font_size: root.calculate_font_size(self.width)
+            TextInput:
+                pos_hint:{"right":0.45,"top":0.35}
+                size_hint: 0.06, 0.04
+                background_color: (1,1,1,0)
+                id: pagina
+                hint_text: ""
+                color: (0,0,0,1)
+                canvas.before:
+                    Color:
+                        rgba: 0,0,0,1
+                    Line:
+                        width: 1
+                        rectangle: (self.x, self.y, self.width, self.height)
+            Label:
+                pos_hint:{"right":0.69,"top":0.43}
+                size_hint: 0.1, 0.2
+                color: (0,0,0,1)
+                text: "Quantidade em estoque: "
+                id: texto_autor
+                font_size: root.calculate_font_size(self.width)
+            TextInput:
+                pos_hint:{"right":0.81,"top":0.35}
+                size_hint: 0.06, 0.04
+                background_color: (1,1,1,0)
+                id: quantidade
+                hint_text: ""
+                color: (0,0,0,1)
+                canvas.before:
+                    Color:
+                        rgba: 0,0,0,1
+                    Line:
+                        width: 1
+                        rectangle: (self.x, self.y, self.width, self.height)
+            GridLayout:
+                pos_hint:{"right":0.4,"top":0.46}
+                size_hint: 0.2, 0.05
+                cols: 1
+                Button:
+                    color: (0,0,0,1)
+                    id: btn
+                    text: "Gênero"
+                    on_parent: drop_content.dismiss()
+                    on_release: drop_content.open(self)
+                    background_color: (1,1,1,0)
+                    canvas.before:
+                        Color:
+                            rgba: 0,1,0,1
+                        Line:
+                            width: 1.5
+                            rectangle: (self.x, self.y, self.width, self.height)
+                DropDown:
+                    id: drop_content
+                    on_select: btn.text = f'{args[1]}' # see note below
+                    Button:
+                        color: (0,0,0,1)
+                        id: btn1
+                        text: 'Fantasia'
+                        size_hint: 0.2, None
+                        height: 40
+                        on_release: drop_content.select('Fantasia')
+                        background_color: (1,1,1,1)
+                        background_normal: ""
+                        canvas.before:
+                            Color:
+                                rgba: 0,1,0,1
+                            Line:
+                                width: 1
+                                rectangle: (self.x, self.y, self.width, self.height)
+                    Button:
+                        color: (0,0,0,1)
+                        id: btn2
+                        text: 'Educação'
+                        size_hint: 0.2, None
+                        height: 40
+                        on_release: drop_content.select('Educação')
+                        background_color: (1,1,1,1)
+                        background_normal: ""
+                        canvas.before:
+                            Color:
+                                rgba: 135/255,206/255,250/255,1
+                            Line:
+                                width: 1
+                                rectangle: (self.x, self.y, self.width, self.height)
+                    Button:
+                        color: (0,0,0,1)
+                        id: btn3
+                        text: 'Biografia'
+                        size_hint: 0.2, None
+                        height: 40
+                        on_release: drop_content.select('Biografia')
+                        background_color: (1,1,1,1)
+                        background_normal: ""
+                        canvas.before:
+                            Color:
+                                rgba: 135/255,206/255,250/255,1
+                            Line:
+                                width: 1
+                                rectangle: (self.x, self.y, self.width, self.height)
+                    Button:
+                        color: (0,0,0,1)
+                        id: btn4
+                        text: 'Poemas e Rimas'
+                        size_hint: 0.2, None
+                        height: 40
+                        on_release: drop_content.select('Poemas e Rimas')
+                        background_color: (1,1,1,1)
+                        background_normal: ""
+                        canvas.before:
+                            Color:
+                                rgba: 135/255,206/255,250/255,1
+                            Line:
+                                width: 1
+                                rectangle: (self.x, self.y, self.width, self.height)
+                    Button:
+                        color: (0,0,0,1)
+                        id: btn5
+                        text: 'Comédia'
+                        size_hint: 0.2, None
+                        height: 40
+                        on_release: drop_content.select('Comédia')
+                        background_color: (1,1,1,1)
+                        background_normal: ""
+                        canvas.before:
+                            Color:
+                                rgba: 135/255,206/255,250/255,1
+                            Line:
+                                width: 1
+                                rectangle: (self.x, self.y, self.width, self.height)
+                    Button:
+                        color: (0,0,0,1)
+                        id: btn6
+                        text: 'Gibi'
+                        size_hint: 0.2, None
+                        height: 40
+                        on_release: drop_content.select('Gibi')
+                        background_color: (1,1,1,1)
+                        background_normal: ""
+                        canvas.before:
+                            Color:
+                                rgba: 135/255,206/255,250/255,1
+                            Line:
+                                width: 1
+                                rectangle: (self.x, self.y, self.width, self.height)
+                    Button:
+                        color: (0,0,0,1)
+                        id: btn7
+                        text: 'Fábulas e Lendas'
+                        size_hint: 0.2, None
+                        height: 40
+                        on_release: drop_content.select('Fábulas e Lendas')
+                        background_color: (1,1,1,1)
+                        background_normal: ""
+                        canvas.before:
+                            Color:
+                                rgba: 135/255,206/255,250/255,1
+                            Line:
+                                width: 1
+                                rectangle: (self.x, self.y, self.width, self.height)
+                    Button:
+                        color: (0,0,0,1)
+                        id: btn8
+                        text: 'Terror e Suspense'
+                        size_hint: 0.2, None
+                        height: 40
+                        on_release: drop_content.select('Terror e Suspense')
+                        background_color: (1,1,1,1)
+                        background_normal: ""
+                        canvas.before:
+                            Color:
+                                rgba: 135/255,206/255,250/255,1
+                            Line:
+                                width: 1
+                                rectangle: (self.x, self.y, self.width, self.height)
+                    Button:
+                        color: (0,0,0,1)
+                        id: btn9
+                        text: 'Romance'
+                        size_hint: 0.2, None
+                        height: 40
+                        on_release: drop_content.select('Romance')
+                        background_color: (1,1,1,1)
+                        background_normal: ""
+                        canvas.before:
+                            Color:
+                                rgba: 135/255,206/255,250/255,1
+                            Line:
+                                width: 1
+                                rectangle: (self.x, self.y, self.width, self.height)
+                    Button:
+                        color: (0,0,0,1)
+                        id: btn10
+                        text: 'Infantil'
+                        size_hint: 0.2, None
+                        height: 40
+                        on_release: drop_content.select('Infantil')
+                        background_color: (1,1,1,1)
+                        background_normal: ""
+                        canvas.before:
+                            Color:
+                                rgba: 135/255,206/255,250/255,1
+                            Line:
+                                width: 1
+                                rectangle: (self.x, self.y, self.width, self.height)
+            GridLayout:
+                pos_hint:{"right":0.6075,"top":0.43}
+                size_hint: 0.2, 0.05
+                cols: 1
+                Button:
+                    color: (0,0,0,1)
+                    id: btn11
+                    text: "Faixa-Etária"
+                    on_parent: drop_content1.dismiss()
+                    on_release: drop_content1.open(self)
+                    background_color: (1,1,1,0)
+                    canvas.before:
+                        Color:
+                            rgba: 0,0,1,1
+                        Line:
+                            width: 1.5
+                            rectangle: (self.x, self.y, self.width, self.height)
+                    DropDown:
+                        id: drop_content1
+                        on_select: btn11.text = f'{args[1]}' # see note below
+                        Button:
+                            color: (0,0,0,1)
+                            id: btn12
+                            text: '0-3 anos'
+                            size_hint: 0.2, None
+                            height: 40
+                            on_release: drop_content1.select('0-3 anos')
+                            background_color: (1,1,1,1)
+                            background_normal: ""
+                            canvas.before:
+                                Color:
+                                    rgba: 0,1,0,1
+                                Line:
+                                    width: 1
+                                    rectangle: (self.x, self.y, self.width, self.height)
+                        Button:
+                            color: (0,0,0,1)
+                            id: btn13
+                            text: '4-8 anos'
+                            size_hint: 0.2, None
+                            height: 40
+                            on_release: drop_content1.select('4-8 anos')
+                            background_color: (1,1,1,1)
+                            background_normal: ""
+                            canvas.before:
+                                Color:
+                                    rgba: 135/255,206/255,250/255,1
+                                Line:
+                                    width: 1
+                                    rectangle: (self.x, self.y, self.width, self.height)
+                        Button:
+                            color: (0,0,0,1)
+                            id: btn40
+                            text: '8-12 anos'
+                            size_hint: 0.2, None
+                            height: 40
+                            on_release: drop_content1.select('5-8 anos')
+                            background_color: (1,1,1,1)
+                            background_normal: ""
+                            canvas.before:
+                                Color:
+                                    rgba: 135/255,206/255,250/255,1
+                                Line:
+                                    width: 1
+                                    rectangle: (self.x, self.y, self.width, self.height)
+                        Button:
+                            color: (0,0,0,1)
+                            id: btn41
+                            text: '13-17 anos'
+                            size_hint: 0.2, None
+                            height: 40
+                            on_release: drop_content1.select('13-17 anos')
+                            background_color: (1,1,1,1)
+                            background_normal: ""
+                            canvas.before:
+                                Color:
+                                    rgba: 135/255,206/255,250/255,1
+                                Line:
+                                    width: 1
+                                    rectangle: (self.x, self.y, self.width, self.height)
+                        Button:
+                            color: (0,0,0,1)
+                            id: btn42
+                            text: '18+ anos'
+                            size_hint: 0.2, None
+                            height: 40
+                            on_release: drop_content1.select('18+ anos')
+                            background_color: (1,1,1,1)
+                            background_normal: ""
+                            canvas.before:
+                                Color:
+                                    rgba: 135/255,206/255,250/255,1
+                                Line:
+                                    width: 1
+                                    rectangle: (self.x, self.y, self.width, self.height)
+
+            GridLayout:
+                pos_hint:{"right":0.815,"top":0.46}
+                size_hint: 0.2, 0.05
+                cols: 1
+                Button:
+                    color: (0,0,0,1)
+                    id: btn14
+                    text: "Status"
+                    on_parent: drop_content2.dismiss()
+                    on_release: drop_content2.open(self)
+                    background_color: (1,1,1,0)
+                    canvas.before:
+                        Color:
+                            rgba: 1,0,0,1
+                        Line:
+                            width: 1.5
+                            rectangle: (self.x, self.y, self.width, self.height)
+                    DropDown:
+                        id: drop_content2
+                        on_select: btn14.text = f'{args[1]}' # see note below
+                        Button:
+                            color: (0,0,0,1)
+                            id: btn20
+                            text: 'Disponível'
+                            size_hint: 0.2, None
+                            height: 40
+                            on_release: drop_content2.select('Disponível')
+                            background_color: (1,1,1,1)
+                            background_normal: ""
+                            canvas.before:
+                                Color:
+                                    rgba: 0,1,0,1
+                                Line:
+                                    width: 1
+                                    rectangle: (self.x, self.y, self.width, self.height)
+                        Button:
+                            color: (0,0,0,1)
+                            id: btn15
+                            text: 'Emprestado'
+                            size_hint: 0.2, None
+                            height: 40
+                            on_release: drop_content2.select('Emprestado')
+                            background_color: (1,1,1,1)
+                            background_normal: ""
+                            canvas.before:
+                                Color:
+                                    rgba: 135/255,206/255,250/255,1
+                                Line:
+                                    width: 1
+                                    rectangle: (self.x, self.y, self.width, self.height)
+                        Button:
+                            color: (0,0,0,1)
+                            id: btn16
+                            text: 'Danificado'
+                            size_hint: 0.2, None
+                            height: 40
+                            on_release: drop_content2.select('Danificado')
+                            background_color: (1,1,1,1)
+                            background_normal: ""
+                            canvas.before:
+                                Color:
+                                    rgba: 135/255,206/255,250/255,1
+                                Line:
+                                    width: 1
+                                    rectangle: (self.x, self.y, self.width, self.height)
+
+                        Button:
+                            color: (0,0,0,1)
+                            id: btn17
+                            text: 'Reservado'
+                            size_hint: 0.2, None
+                            height: 40
+                            on_release: drop_content2.select('Reservado')
+                            background_color: (1,1,1,1)
+                            background_normal: ""
+                            canvas.before:
+                                Color:
+                                    rgba: 0,1,0,1
+                                Line:
+                                    width: 1
+                                    rectangle: (self.x, self.y, self.width, self.height)
+                        Button:
+                            color: (0,0,0,1)
+                            id: btn18
+                            text: 'Perdido'
+                            size_hint: 0.2, None
+                            height: 40
+                            on_release: drop_content2.select('Perdido')
+                            background_color: (1,1,1,1)
+                            background_normal: ""
+                            canvas.before:
+                                Color:
+                                    rgba: 135/255,206/255,250/255,1
+                                Line:
+                                    width: 1
+                                    rectangle: (self.x, self.y, self.width, self.height)
+                        Button:
+                            color: (0,0,0,1)
+                            id: btn19
+                            text: 'Digital'
+                            size_hint: 0.2, None
+                            height: 40
+                            on_release: drop_content2.select('Digital')
+                            background_color: (1,1,1,1)
+                            background_normal: ""
+                            canvas.before:
+                                Color:
+                                    rgba: 135/255,206/255,250/255,1
+                                Line:
+                                    width: 1
+                                    rectangle: (self.x, self.y, self.width, self.height)
+
+
+        FloatLayout:
+
+
+            ImageButton:
+                pos_hint: {"right":0.15,"top":0.45}
+                size_hint: 0.2, 0.8
+                source: "Images/voltar.png"
+                on_release: app.mudar_tela("homepage")
+
+
+
+
+
+
+

@@ -1,0 +1,115 @@
+<CadastrarAluno>:
+    FloatLayout:
+        id: registro_aluno
+
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "Images/quadro_cadastro.jpg"
+        Image:
+            pos_hint:{"right":1,"top":0.89}
+            size_hint: 1, 0.2
+            source:"Images/barca.jpg"
+            id: foto_perfil
+
+        ImageButton:
+            pos_hint: {"right":0.15,"top":0.45}
+            size_hint: 0.2, 0.8
+            source: "Images/voltar.png"
+            on_release: app.mudar_tela("homepage")
+
+
+
+        Label:
+            pos_hint:{"right":0.28,"top":0.75}
+            size_hint: 0.1, 0.2
+            color: (0,0,0,1)
+            text: "Nome: "
+            id: texto_nome
+            font_size: root.calculate_font_size(self.width)
+        TextInput:
+            pos_hint:{"right":0.47,"top":0.67}
+            size_hint: 0.2, 0.04
+            background_color: (1,1,1,0)
+            id: nome
+            hint_text: ""
+            color: (0,0,0,1)
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,1
+                Line:
+                    width: 1
+                    rectangle: (self.x, self.y, self.width, self.height)
+        Label:
+            pos_hint:{"right":0.65,"top":0.75}
+            size_hint: 0.1, 0.2
+            color: (0,0,0,1)
+            text: "Data de nascimento: "
+            id: texto_data_nascimento
+            font_size: root.calculate_font_size(self.width)
+        TextInput:
+            pos_hint:{"right":0.9,"top":0.67}
+            size_hint: 0.2, 0.04
+            background_color: (1,1,1,0)
+            text: ""
+            id: data_nascimento
+            hint_text: ""
+            color: (0,0,0,1)
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,1
+                Line:
+                    width: 1
+                    rectangle: (self.x, self.y, self.width, self.height)
+
+
+        Label:
+            pos_hint:{"right":0.28,"top":0.65}
+            size_hint: 0.1, 0.2
+            color: (0,0,0,1)
+            text: "Endereço: "
+            id: texto_endereco
+            font_size: root.calculate_font_size(self.width)
+        TextInput:
+            pos_hint:{"right":0.9,"top":0.57}
+            size_hint: 0.63, 0.04
+            background_color: (1,1,1,0)
+            id: endereco
+            hint_text: ""
+            color: (0,0,0,1)
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,1
+                Line:
+                    width: 1
+                    rectangle: (self.x, self.y, self.width, self.height)
+
+        Button:
+            pos_hint:{"right":0.92,"top":0.37}
+            size_hint: 0.26, 0.1
+            background_color: (1,1,1,0.2) if self.state == "normal" else (1,1,1,1)
+            text: "Cadastrar aluno"
+            color: 0,0,0,1
+            on_release: ""
+            id: cadastrar
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,1
+                Line:
+                    width: 2
+                    rectangle: (self.x, self.y, self.width, self.height)
+
+    FloatLayout:
+        id: cadastro_email
+
+        Label:
+            id: confirmacao_cadastro
+            text:""
+            color: 0,0,0,1
+            pos_hint:{"right":0.92,"top":0.3}
+            size_hint: 0.26, 0.1
+            font_size: root.calculate_font_size(self.width)
+
+
+

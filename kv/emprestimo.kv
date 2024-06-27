@@ -1,0 +1,193 @@
+<Emprestimo>:
+    FloatLayout:
+        id: emprestimo_aluno
+
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "Images/pagina_emprestimos.jpg"
+        Image:
+            pos_hint:{"right":0.9,"top":0.83}
+            size_hint: 1, 0.2
+            source:"Images/barca.jpg"
+            id: foto_perfil
+
+        ImageButton:
+            pos_hint: {"right":0.15,"top":0.45}
+            size_hint: 0.2, 0.8
+            source: "Images/voltar.png"
+            on_release: app.mudar_tela("homepage")
+
+
+        Label:
+            pos_hint:{"right":0.2,"top":0.85}
+            size_hint: 0.1, 0.2
+            color: (0,0,0,1)
+            text: "ID do aluno:"
+            id: texto_id_aluno
+        TextInput:
+            pos_hint:{"right":0.26,"top":0.78}
+            size_hint: 0.05, 0.04
+            background_color: (1,1,1,0)
+            id: id_aluno
+            hint_text: ""
+            color: (0,0,0,1)
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,1
+                Line:
+                    width: 1
+                    rectangle: (self.x, self.y, self.width, self.height)
+        Label:
+            pos_hint:{"right":0.2,"top":0.78}
+            size_hint: 0.1, 0.2
+            color: (0,0,0,1)
+            text: "ID do livro:"
+            id: texto_id_livro
+
+        Label:
+            pos_hint:{"right":0.78,"top":0.67}
+            size_hint: 0.1, 0.2
+            color: (0,0,0,1)
+            text: ""
+            id: id_confirmacao
+
+
+        LabelButton:
+            pos_hint:{"right":0.92,"top":0.87}
+            size_hint: 0.2, 0.2
+            text: "Emprestar"
+            on_release: app.emprestar_livro()
+            color: 0,0,0,1
+
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "Images/botao.png" if self.state == "normal" else "Images/botao_apertado.png"
+                Color:
+                    rgba: 1,1,0,1
+                Line:
+                    width: 2
+                    rectangle: (self.x+20, self.y+40, self.width-40, self.height-67)
+
+
+
+        LabelButton:
+            pos_hint:{"right":0.75,"top":0.87}
+            size_hint: 0.2, 0.2
+            text: "Reservar"
+            on_release: app.reservar_livro()
+            color: 0,0,0,1
+
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "Images/botao.png" if self.state == "normal" else "Images/botao_apertado.png"
+                Color:
+                    rgba: 0,1,0,1
+                Line:
+                    width: 2
+                    rectangle: (self.x+20, self.y+40, self.width-40, self.height-67)
+
+
+
+        ScrollView:
+            pos_hint: {"right":1.02,"top":0.62}
+            size_hint: 1.045, 0.33
+            GridLayout:
+                cols: 1
+                id: lista_emprestimo
+                spacing: 2,2
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: "90dp"
+                row_force_default: True
+                font_size: root.calculate_font_size(self.width)
+
+
+        TextInput:
+            pos_hint:{"right":0.26,"top":0.7}
+            size_hint: 0.05, 0.04
+            background_color: (1,1,1,0)
+            id: id_livro
+            hint_text: ""
+            color: (0,0,0,1)
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,1
+                Line:
+                    width: 1
+                    rectangle: (self.x, self.y, self.width, self.height)
+
+        LabelButton:
+            pos_hint:{"right":0.92,"top":0.74}
+            size_hint: 0.2, 0.2
+            text: "Devolver"
+            on_release: app.devolver_livro()
+            color: 0,0,0,1
+            font_size: root.calculate_font_size(self.width)
+
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "Images/botao.png" if self.state == "normal" else "Images/botao_apertado.png"
+                Color:
+                    rgba: 1,0,0,1
+                Line:
+                    width: 2
+                    rectangle: (self.x+20, self.y+40, self.width-40, self.height-67)
+
+        LabelButton:
+            pos_hint:{"right":0.75,"top":0.74}
+            size_hint: 0.2, 0.2
+            text: "Desfazer Reserva"
+            on_release: app.desfazer_reserva()
+            color: 0,0,0,1
+            font_size: root.calculate_font_size(self.width)
+
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "Images/botao.png" if self.state == "normal" else "Images/botao_apertado.png"
+                Color:
+                    rgba: 1,0,0,1
+                Line:
+                    width: 2
+                    rectangle: (self.x+20, self.y+40, self.width-40, self.height-67)
+
+        Label:
+            pos_hint:{"right":0.37,"top":0.7}
+            size_hint: 0.1, 0.2
+            color: (0,0,0,1)
+            text: "data de expiração:"
+            id: texto_validade
+            font_size: root.calculate_font_size(self.width)
+        TextInput:
+            pos_hint:{"right":0.55,"top":0.62}
+            size_hint: 0.15, 0.04
+            background_color: (1,1,1,0)
+            id: input_validade
+            hint_text: ""
+            color: (0,0,0,1)
+            canvas.before:
+                Color:
+                    rgba: 0,0,0,1
+                Line:
+                    width: 1
+                    rectangle: (self.x, self.y, self.width, self.height)
+
+
+

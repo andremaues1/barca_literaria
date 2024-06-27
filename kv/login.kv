@@ -1,0 +1,55 @@
+<LoginPage>:
+    FloatLayout:
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "Images/login_barca.jpg"
+
+        Label:
+            text: "Biblioteca da [color=#000080]Barca literária[/color]"
+            bold: True
+            markup: True
+            pos_hint: {"right":1.15,"top":0.65}
+            size_hint: 0.8, 0.2
+            font_size: root.calculate_font_size(self.width)
+
+
+
+
+        TextInput:
+            id: email
+            hint_text: "E-mail"
+            pos_hint: {"right":0.95,"top":0.5}
+            size_hint: 0.4,0.1
+        TextInput:
+            id: senha
+            password: True
+            hint_text: "Senha"
+            pos_hint: {"right":0.95,"top":0.35}
+            size_hint: 0.4,0.1
+
+
+
+
+        LabelButton:
+            text: "Faça seu login"
+            on_release: app.fazer_login()
+            canvas.before:
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "Images/botao.png" if self.state == "normal" else "Images/botao_apertado.png"
+            pos_hint: {"right":0.95,"top":0.23}
+            size_hint: 0.4,0.1
+            font_size: root.calculate_font_size(self.width)
+
+
+        Label:
+            text: ""
+            bold: True
+            pos_hint: {"right":1.15,"top":0.2}
+            size_hint: 0.8,0.2
+            id: login_confirmacao
+            font_size: root.calculate_font_size(self.width)
+
